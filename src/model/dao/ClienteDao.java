@@ -6,7 +6,7 @@ import model.entities.Cliente;
 import model.entities.Emprestimo;
 
 public interface ClienteDao {
-	
+
 	void insert(Cliente obj);
 
 	void update(Cliente obj);
@@ -15,10 +15,12 @@ public interface ClienteDao {
 
 	Cliente findById(Integer id);
 
-	List<Cliente> findAll();
+	void insert(Emprestimo obj);
 
-	List<Cliente> findByEmprestimo(Emprestimo emprestimo);
-	
-	
+	void update(Emprestimo obj);
+
+	void deleteEmprestimo(Integer id);
+
+	List<Cliente> findAll();
 
 }

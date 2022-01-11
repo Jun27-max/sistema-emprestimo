@@ -12,16 +12,17 @@ public class Cliente {
 	private String endereço;
 	private Double renda;
 	private String senha;
-
+	private Double valor;
+	private int parcela;
+	
 	private Emprestimo emprestimo;
 
 	public Cliente() {
 
 	}
 
-	public Cliente(int id, String nome, String email, String cpf, String rg, String endereço, Double renda,
-			String senha, Emprestimo emprestimo) {
-		this.id = id;
+	public Cliente( String nome, String email, String cpf, String rg, String endereço, Double renda,
+			String senha, Double valor, int parcela) {
 		this.nome = nome;
 		this.email = email;
 		this.cpf = cpf;
@@ -29,11 +30,29 @@ public class Cliente {
 		this.endereço = endereço;
 		this.renda = renda;
 		this.senha = senha;
+		this.valor = valor;
+		this.parcela = parcela;
+	}
+	
+	
+	public Cliente(int id, String nome, String email, String cpf, Double renda, Double valor, int parcela,
+			Emprestimo emprestimo) {
+		this.id = id;
+		this.nome = nome;
+		this.email = email;
+		this.cpf = cpf;
+		this.renda = renda;
+		this.valor = valor;
+		this.parcela = parcela;
 		this.emprestimo = emprestimo;
 	}
 
 	public int getId() {
 		return id;
+	}
+	
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getNome() {
@@ -80,8 +99,40 @@ public class Cliente {
 		return renda;
 	}
 
+	public void setRenda(Double renda) {
+		this.renda = renda;
+	}
+
 	public String getSenha() {
 		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+
+	public Double getValor() {
+		return valor;
+	}
+
+	public void setValor(Double valor) {
+		this.valor = valor;
+	}
+
+	public int getParcela() {
+		return parcela;
+	}
+
+	public void setParcela(int parcela) {
+		this.parcela = parcela;
+	}
+	
+	public Emprestimo getEmprestimo() {
+		return emprestimo;
+	}
+
+	public void setEmprestimo(Emprestimo emprestimo) {
+		this.emprestimo = emprestimo;
 	}
 
 	@Override
@@ -101,11 +152,8 @@ public class Cliente {
 		return id == other.id;
 	}
 
-	@Override
-	public String toString() {
-		return "Cliente [id=" + id + ", nome=" + nome + ", email=" + email + ", cpf=" + cpf + ", rg=" + rg
-				+ ", endereço=" + endereço + ", renda=" + renda + ", senha=" + senha + ", emprestimo=" + emprestimo
-				+ "]";
+	public Double subTotal() {
+		return valor * parcela;
 	}
 
 }
